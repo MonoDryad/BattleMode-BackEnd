@@ -11,6 +11,10 @@ module.exports = (sequelize, Sequelize) => {
             is: /^[a-zA-z0-9\._]{4, 32}$/,
             unique: true
         },
+        icon:{
+            type: Sequelize.STRING,
+            notNull: true,
+        },
         email: {
             type: Sequelize.STRING,
             notNull: true,
@@ -22,6 +26,9 @@ module.exports = (sequelize, Sequelize) => {
         }
 
     },
+    
+
+
     {
         timestamps: false,
     }

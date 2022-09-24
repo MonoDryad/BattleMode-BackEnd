@@ -4,7 +4,7 @@ const User = db.users
 exports.findAll = async () => {
     try{
         const users = await User.findAll({
-            attributes:['id', 'username', 'email']
+            attributes:['id', 'username', 'icon', 'email', 'password']
         })
         return users
     }catch(e){
@@ -15,7 +15,7 @@ exports.findAll = async () => {
 exports.findById = async(id) => {
     try{
         const users = await User.findById(id, {
-            attributes:['id', 'username', 'email']
+            attributes:['id', 'username', 'icon', 'email', 'password']
         })
         return users
     }catch(e){
@@ -23,19 +23,19 @@ exports.findById = async(id) => {
     }
 }
 
-exports.create = async(username, email, password) => {
+exports.create = async(username, icon, email, password) => {
     try{
-        const user = await User.create({username: username, email: email, password: password})
+        const user = await User.create({username: username, icon: icon, email: email, password: password})
         return user
     }catch(e){
         throw Error('Erro ao inserir o usuário: ' + username + ' ERROR: ' + e.message)
     }
 }
 
-exports.update = async(id, username, email, password) => {
+exports.update = async(id, username, icon, email, password) => {
     try{
         await User.update({
-            username:username, email: email, password: password
+            username:username, email: email, icon: icon, password: password
         }, {where: {id: id}})
 
     }catch(e){

@@ -1,88 +1,93 @@
-const userService = require('../services/user.service')
+const TimeService = require('../services/time.service')
 
 exports.findAll = async (request, response) => {
-    try{
-        const users = await userService.findAll()
+    try {
+        const time = await TimeService.findAll()
         return response.status(200).json({
             status: 200,
-            data: users,
-            message: 'Usuários listados com sucesso'
+            data: time,
+            message: 'Times listados com sucesso'
         })
     } catch (e) {
         response.send(400).json({
-            status:400,
+            status: 400,
             message: e
         })
     }
 }
 
 exports.findById = async (request, response) => {
-    try{
+    try {
         const id = parseInt(request.params.id)
-        const user = await userService.findById(id)
+        const time = await TimeService.findById(id)
         return response.status(200).json({
             status: 200,
-            data: user,
-            message: 'Usuários listados com sucesso'
+            data: time,
+            message: 'Times listados com sucesso'
         })
     } catch (e) {
         response.send(400).json({
-            status:400,
+            status: 400,
             message: e
         })
     }
 }
 
 exports.create = async (request, response) => {
-    try{
-        const {username, icon, email, password} = request.body
-        const user = await userService.create(username, icon, email, password)
+    try {
+        const { nome, tag ,logo, imgFundo } = request.body
+        const time = await TimeService.create(nome, tag ,logo, imgFundo)
         return response.status(201).json({
-            message: 'Usuários listados com sucesso',
+            message: 'Time cadastrado com sucesso',
             body: {
-                data: user
+                data: time
             }
         })
     } catch (e) {
         response.send(400).json({
-            status:400,
+            status: 400,
             message: e
         })
     }
 }
 
 exports.update = async (request, response) => {
-    try{
+    try {
         const id = parseInt(request.params.id)
-        const {username, icon, email, password} = request.body
+        const { nome, tag ,logo, imgFundo } = request.body
 
-        await userService.update(username, email, password)
+        await TimeService.update(nome, tag ,logo, imgFundo)
         return response.status(201).json({
-            message: 'Usuários alterado com sucesso',
+            message: 'time alterado com sucesso',
             body: {
-                username: username,
-                email: email
+              nome: nome,
+              tag: tag,
+              logo: logo,
+              imgFundo: imgFundo
             }
         })
     } catch (e) {
         response.send(400).json({
-            status:400,
+            status: 400,
             message: e
         })
     }
 }
 
 exports.delete = async (request, response) => {
-    try{
+    try {
         const id = parseInt(request.params.id)
-        await userService.delete(id)
+        await TimeService.delete(id)
         return response.status(200).json({
-            message: 'Usuário deletado'
+            message: 'time deletado'
         })
     } catch (e) {
         response.send(400).json({
-            status:400,
+            status: 400,
             message: e
         })
     }
 }
+
+
+

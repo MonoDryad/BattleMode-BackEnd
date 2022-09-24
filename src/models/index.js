@@ -1,4 +1,5 @@
 
+
 const dbConfig = require('../config/db.config')
 
 const Sequelize = require('sequelize')
@@ -20,5 +21,13 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 db.users = require('../models/user.model.js')(db.sequelize, db.Sequelize)
+db.time = require('../models/time.model.js')(db.sequelize, db.Sequelize)
+db.torneio = require('../models/torneio.model.js')(db.sequelize, db.Sequelize)
 db.users.sync()
+db.torneio.sync()
+db.time.sync()
+
+
+
+
 module.exports = db
