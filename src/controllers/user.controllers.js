@@ -9,7 +9,7 @@ exports.findAll = async (request, response) => {
             message: 'Usuários listados com sucesso'
         })
     } catch (e) {
-        response.send(400).json({
+        return response.send(400).json({
             status:400,
             message: e
         })
@@ -26,7 +26,7 @@ exports.findById = async (request, response) => {
             message: 'Usuários listados com sucesso'
         })
     } catch (e) {
-        response.send(400).json({
+        return response.send(400).json({
             status:400,
             message: e
         })
@@ -44,7 +44,7 @@ exports.create = async (request, response) => {
             }
         })
     } catch (e) {
-        response.send(400).json({
+        return response.send(400).json({
             status:400,
             message: e
         })
@@ -65,7 +65,7 @@ exports.update = async (request, response) => {
             }
         })
     } catch (e) {
-        response.send(400).json({
+        return response.send(400).json({
             status:400,
             message: e
         })
@@ -80,7 +80,7 @@ exports.delete = async (request, response) => {
             message: 'Usuário deletado'
         })
     } catch (e) {
-        response.send(400).json({
+        return response.send(400).json({
             status:400,
             message: e
         })
