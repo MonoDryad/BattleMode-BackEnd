@@ -16,10 +16,10 @@ exports.findAll = async (request, response) => {
     }
 }
 
-exports.findById = async (request, response) => {
+exports.findByPk = async (request, response) => {
     try{
         const id = parseInt(request.params.id)
-        const user = await userService.findById(id)
+        const user = await userService.findByPk(id)
         return response.status(200).json({
             status: 200,
             data: user,
