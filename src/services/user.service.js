@@ -12,9 +12,9 @@ exports.findAll = async () => {
     }
 }
 
-exports.findById = async(id) => {
+exports.findByPk = async(id) => {
     try{
-        const users = await User.findById(id, {
+        const users = await User.findByPk(id, {
             attributes:['id', 'username', 'icon', 'email', 'password']
         })
         return users
