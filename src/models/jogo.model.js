@@ -5,20 +5,24 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        titulo: {
+        nome: {
             type: Sequelize.STRING,
             NotNull: true,
         },
-        descricao: {
-            type: Sequelize.INTEGER,
+        logo: {
+            type: Sequelize.STRING,
             NotNull: true,
         },
-        imgHover: {
-            type: Sequelize.INTEGER,
+        descricaoLonga: {
+            type: Sequelize.STRING,
             NotNull: true,
         },
-        img: {
-            type: Sequelize.INTEGER,
+        descricaoBreve: {
+            type: Sequelize.STRING,
+            NotNull: true,
+        },
+        imgFundo: {
+            type: Sequelize.STRING,
             NotNull: true,
         },
 

@@ -16,10 +16,10 @@ exports.findAll = async (request, response) => {
     }
 }
 
-exports.findById = async (request, response) => {
+exports.findByPk = async (request, response) => {
     try {
         const id = parseInt(request.params.id)
-        const jogo = await jogoService.findById(id)
+        const jogo = await jogoService.findByPk(id)
         return response.status(200).json({
             status: 200,
             data: jogo,
@@ -36,7 +36,7 @@ exports.findById = async (request, response) => {
 exports.create = async (request, response) => {
     try {
         const { nome, logo, descricaoLonga, descricaoBreve, imgFundo } = request.body
-        const jogo = await TimeService.create(nome, logo, descricaoLonga, descricaoBreve, imgFundo)
+        const jogo = await jogoService.create(nome, logo, descricaoLonga, descricaoBreve, imgFundo)
         return response.status(201).json({
             message: 'jogo cadastrado com sucesso',
             body: {

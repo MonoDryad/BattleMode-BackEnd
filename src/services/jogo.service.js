@@ -4,7 +4,7 @@ const Jogo = db.jogo
 exports.findAll = async () => {
     try {
         const jogo = await Jogo.findAll({
-            attributes: ['id', 'titulo']
+            attributes: ['id', 'nome', 'logo', 'descricaoLonga', 'descricaoBreve', 'imgFundo' ]
         })
         return jogo
     } catch (e) {
@@ -12,10 +12,10 @@ exports.findAll = async () => {
     }
 }
 
-exports.findById = async (id) => {
+exports.findByPk = async (id) => {
     try {
-        const jogo = await Jogo.findById(id, {
-            attributes: ['id', 'titulo']
+        const jogo = await Jogo.findByPk(id, {
+            attributes: ['id', 'nome']
         })
         return jogo
     } catch (e) {
@@ -23,12 +23,12 @@ exports.findById = async (id) => {
     }
 }
 
-exports.create = async (titulo, descricao, imgHover, img) => {
+exports.create = async (nome, logo, descricaoLonga, descricaoBreve, imgFundo) => {
     try {
-        const jogo = await Jogo.create({ titulo: titulo, descricao: descricao, imgHover: imgHover, img: img })
+        const jogo = await Jogo.create({ nome: nome, logo: logo, descricaoLonga: descricaoLonga, descricaoBreve: descricaoBreve, imgFundo: imgFundo })
         return jogo
     } catch (e) {
-        throw Error('Erro ao inserir o usuário: ' + titulo + ' ERROR: ' + e.message)
+        return e.message
     }
 }
 
