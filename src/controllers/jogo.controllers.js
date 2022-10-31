@@ -35,8 +35,8 @@ exports.findByPk = async (request, response) => {
 
 exports.create = async (request, response) => {
     try {
-        const { nome, logo, descricaoLonga, descricaoBreve, imgFundo } = request.body
-        const jogo = await jogoService.create(nome, logo, descricaoLonga, descricaoBreve, imgFundo)
+        const {nome, logo, descricaoLonga, descricaoBreve, imgFundo } = request.body
+        const jogo = await jogoService.create(nome, logo, descricaoLonga, descricaoBreve, imgFundo )
         return response.status(201).json({
             message: 'jogo cadastrado com sucesso',
             body: {
@@ -54,9 +54,9 @@ exports.create = async (request, response) => {
 exports.update = async (request, response) => {
     try {
         const id = parseInt(request.params.id)
-        const {titulo, descricao, imgHover, img } = request.body
+        const {nome, logo, descricaoLonga, descricaoBreve, imgFundo } = request.body
 
-        await jogoService.update(titulo, descricao, imgHover, img)
+        await jogoService.update(nome, logo, descricaoLonga, descricaoBreve, imgFundo)
         return response.status(201).json({
             message: 'jogo alterado com sucesso',
             body: {

@@ -16,10 +16,10 @@ exports.findAll = async (request, response) => {
     }
 }
 
-exports.findById = async (request, response) => {
+exports.findByPk = async (request, response) => {
     try {
         const id = parseInt(request.params.id)
-        const time = await TimeService.findById(id)
+        const time = await TimeService.findByPk(id)
         return response.status(200).json({
             status: 200,
             data: time,
@@ -35,8 +35,8 @@ exports.findById = async (request, response) => {
 
 exports.create = async (request, response) => {
     try {
-        const { nome, tag ,logo, imgFundo } = request.body
-        const time = await TimeService.create(nome, tag ,logo, imgFundo)
+        const { nome, tag ,logo, imgFundo, equipeAtiva, reserva, comissaoTecnica, jogoPrincipal, conquistas } = request.body
+        const time = await TimeService.create( nome, tag ,logo, imgFundo, equipeAtiva, reserva, comissaoTecnica, jogoPrincipal, conquistas )
         return response.status(201).json({
             message: 'Time cadastrado com sucesso',
             body: {
@@ -44,19 +44,16 @@ exports.create = async (request, response) => {
             }
         })
     } catch (e) {
-        return response.send(400).json({
-            status: 400,
-            message: e
-        })
+        throw Error('Erro ao inserir o time' + ' ERROR: ' + e.message)
     }
 }
 
 exports.update = async (request, response) => {
     try {
         const id = parseInt(request.params.id)
-        const { nome, tag ,logo, imgFundo } = request.body
+        const { nome, tag ,logo, imgFundo, equipeAtiva, reserva, comissaoTecnica, jogoPrincipal, conquistas  } = request.body
 
-        await TimeService.update(nome, tag ,logo, imgFundo)
+        await TimeService.update( nome, tag ,logo, imgFundo, equipeAtiva, reserva, comissaoTecnica, jogoPrincipal, conquistas )
         return response.status(201).json({
             message: 'time alterado com sucesso',
             body: {

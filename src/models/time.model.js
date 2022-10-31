@@ -21,6 +21,27 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             NotNull: true,
         },
+        equipeAtiva:{
+            type: Sequelize.STRING,
+            NotNull: true,
+        },
+        reserva:{
+            type: Sequelize.STRING,
+            NotNull: true,
+        },
+        comissaoTecnica:{
+            type: Sequelize.STRING,
+            NotNull: true,
+        },
+        jogoPrincipal:{
+            type: Sequelize.INTEGER,
+            NotNull: true,
+        },
+        conquistas:{
+            type: Sequelize.STRING,
+            NotNull: true,
+        }
+
     },
     
     {

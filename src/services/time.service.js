@@ -4,7 +4,7 @@ const Time = db.time
 exports.findAll = async () => {
     try{
         const time = await Time.findAll({
-            attributes:['id', 'nome']
+            attributes:['id', 'nome', 'tag' ,'logo', 'imgFundo', 'equipeAtiva', 'reserva', 'comissaoTecnica', 'jogoPrincipal', 'conquistas']
         })
         return time
     }catch(e){
@@ -12,10 +12,10 @@ exports.findAll = async () => {
     }
 }
 
-exports.findById = async(id) => {
+exports.findByPk = async(id) => {
     try{
         const time = await Time.findById(id, {
-            attributes:['id', 'nome']
+            attributes:['id', 'nome', 'tag' ,'logo', 'imgFundo', 'equipeAtiva', 'reserva', 'comissaoTecnica', 'jogoPrincipal', 'conquistas']
         })
         return time
     }catch(e){
@@ -23,19 +23,19 @@ exports.findById = async(id) => {
     }
 }
 
-exports.create = async(nome, tag ,logo, imgFundo) => {
+exports.create = async(nome, tag ,logo, imgFundo, equipeAtiva, reserva, comissaoTecnica, jogoPrincipal, conquistas) => {
     try{
-        const time = await Time.create({nome: nome, tag: tag, logo: logo, imgFundo: imgFundo})
+        const time = await Time.create({nome: nome, tag: tag, logo: logo, imgFundo: imgFundo, equipeAtiva: equipeAtiva, reserva: reserva, comissaoTecnica: comissaoTecnica, jogoPrincipal: jogoPrincipal, conquistas: conquistas})
         return time
     }catch(e){
         throw Error('Erro ao inserir o time: ' + nome + ' ERROR: ' + e.message)
     }
 }
 
-exports.update = async(id, nome, tag ,logo, imgFundo) => {
+exports.update = async(nome, tag ,logo, imgFundo, equipeAtiva, reserva, comissaoTecnica, jogoPrincipal, conquistas) => {
     try{
         await Time.update({
-            nome: nome, tag: tag, logo: logo, imgFundo: imgFundo
+            nome: nome, tag: tag, logo: logo, imgFundo: imgFundo, equipeAtiva: equipeAtiva, reserva: reserva, comissaoTecnica: comissaoTecnica, jogoPrincipal: jogoPrincipal, conquistas: conquistas
         }, {where: {id: id}})
 
     }catch(e){
