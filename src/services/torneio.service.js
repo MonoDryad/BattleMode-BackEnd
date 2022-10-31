@@ -4,7 +4,7 @@ const Torneio = db.torneio
 exports.findAll = async () => {
     try {
         const torneio = await Torneio.findAll({
-            attributes: ['id', 'nome']
+            attributes: ['id', "nome", 'logo', 'descricaoLonga', 'descricaoBreve', 'imgFundo',  'thumbnail', 'participantes', 'gameId']
         })
         return torneio
     } catch (e) {
@@ -12,10 +12,10 @@ exports.findAll = async () => {
     }
 }
 
-exports.findById = async (id) => {
+exports.findByPk = async (id) => {
     try {
-        const torneio = await Torneio.findById(id, {
-            attributes: ['id', 'nome']
+        const torneio = await Torneio.findByPk(id, {
+            attributes: ['id', "nome", 'logo', 'descricaoLonga', 'descricaoBreve', 'imgFundo',  'thumbnail', 'participantes', 'gameId']
         })
         return torneio
     } catch (e) {
@@ -23,19 +23,19 @@ exports.findById = async (id) => {
     }
 }
 
-exports.create = async (nome, logo, descricaoLonga, descricaoBreve, imgFundo) => {
+exports.create = async (nome, logo, descricaoLonga, descricaoBreve, imgFundo, thumbnail, participantes, gameId) => {
     try {
-        const torneio = await Torneio.create({ nome: nome, logo: logo, imgFundo: imgFundo, descricaoLonga: descricaoLonga, descricaoBreve: descricaoBreve })
+        const torneio = await Torneio.create({ nome: nome, logo: logo, imgFundo: imgFundo, descricaoLonga: descricaoLonga, descricaoBreve: descricaoBreve, thumbnail: thumbnail, participantes: participantes, gameId: gameId})
         return torneio
     } catch (e) {
-        throw Error('Erro ao inserir o time: ' + nome + ' ERROR: ' + e.message)
+        return e.message
     }
 }
 
-exports.update = async (id, nome, logo, descricaoLonga, descricaoBreve, imgFundo) => {
+exports.update = async (nome, logo, descricaoLonga, descricaoBreve, imgFundo, thumbnail, participantes, gameId) => {
     try {
         await Torneio.update({
-            nome: nome, logo: logo, imgFundo: imgFundo, descricaoLonga: descricaoLonga, descricaoBreve: descricaoBreve
+            nome: nome, logo: logo, imgFundo: imgFundo, descricaoLonga: descricaoLonga, descricaoBreve: descricaoBreve, thumbnail: thumbnail, participantes: participantes, gameId: gameId
         }, { where: { id: id } })
 
     } catch (e) {

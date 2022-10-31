@@ -1,4 +1,4 @@
-const torneioService = require('../services/time.service')
+const torneioService = require('../services/torneio.service')
 
 exports.findAll = async (request, response) => {
     try {
@@ -16,10 +16,10 @@ exports.findAll = async (request, response) => {
     }
 }
 
-exports.findById = async (request, response) => {
+exports.findByPk = async (request, response) => {
     try {
         const id = parseInt(request.params.id)
-        const torneio = await torneioService.findById(id)
+        const torneio = await torneioService.findByPk(id)
         return response.status(200).json({
             status: 200,
             data: torneio,
@@ -35,8 +35,8 @@ exports.findById = async (request, response) => {
 
 exports.create = async (request, response) => {
     try {
-        const { nome, logo, descricaoLonga, descricaoBreve, imgFundo } = request.body
-        const torneio = await TimeService.create(nome, logo, descricaoLonga, descricaoBreve, imgFundo)
+        const { nome, logo, descricaoLonga, descricaoBreve, imgFundo, thumbnail, participantes, gameId } = request.body
+        const torneio = await torneioService.create(nome, logo, descricaoLonga, descricaoBreve, imgFundo,  thumbnail, participantes, gameId)
         return response.status(201).json({
             message: 'Torneio cadastrado com sucesso',
             body: {

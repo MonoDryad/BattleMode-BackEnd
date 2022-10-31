@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             notNull: true
         },
-         logo:{
+        logo:{
             type: Sequelize.STRING,
             NotNull: true,
         },
@@ -22,10 +22,21 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             NotNull: true,
         },
-        
         imgFundo:{
             type: Sequelize.STRING,
             NotNull: true,
+        },
+        thumbnail:{
+            type: Sequelize.STRING,
+            NotNull: true,
+        },
+        participantes:{
+            type: Sequelize.STRING,
+            NotNull: true,
+        },
+        gameId: {
+            type: Sequelize.INTEGER,
+            NotNull: true
         }
         // inscricoesTime:{
 
