@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "containers-us-west-63.railway.app",
     USER: "postgres",
-    PASSWORD: "senai",
-    DB: "users_db",
+    PASSWORD: "0uAusIm0rYrYKr55NWYq",
+    DB: "railway",
     DIALECT : "postgres",
     pool: {
         max: 5,
